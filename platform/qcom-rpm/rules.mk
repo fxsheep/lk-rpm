@@ -12,7 +12,8 @@ MEMSIZE := 0x5000
 MODULE_SRCS += \
 	$(LOCAL_DIR)/init.c \
 	$(LOCAL_DIR)/debug.c \
-	$(LOCAL_DIR)/vectab.c
+	$(LOCAL_DIR)/vectab.c \
+	$(LOCAL_DIR)/sysaccess.c
 
 LINKER_SCRIPT += \
 	$(BUILDDIR)/system-twosegment.ld
