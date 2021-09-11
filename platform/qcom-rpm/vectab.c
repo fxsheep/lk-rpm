@@ -7,17 +7,13 @@ static void rpm_dummy_irq(void) {
     panic("unhandled irq");
 }
 
-#define DEFAULT_HANDLER(x) \
-    void rpm_##x##_irq(void) __WEAK_ALIAS("rpm_dummy_irq")
+#define RPM_IRQ(name,num) \
+void name##_IRQHandler(void) __WEAK_ALIAS("rpm_dummy_irq");
+#include <platform/irqinfo.h>
+#undef RPM_IRQ
 
-#define DEFIRQ(n) DEFAULT_HANDLER(n);
-#include <platform/defirq.h>
-#undef DEFIRQ
-
-#define VECTAB_ENTRY(x) rpm_##x##_irq
-
-const void *const __SECTION(".text.boot.vectab2") vectab2[] = {
-#define DEFIRQ(n) VECTAB_ENTRY(n),
-#include <platform/defirq.h>
-#undef DEFIRQ
+const void* const __SECTION(".text.boot.vectab2") vectab2[] = {
+#define RPM_IRQ(name,num) [name##_IRQn] = name##_IRQHandler,
+#include <platform/irqinfo.h>
+#undef RPM_IRQ
 };

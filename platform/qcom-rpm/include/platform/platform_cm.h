@@ -2,7 +2,6 @@
 
 #define __NVIC_PRIO_BITS    3
 
-#define DEFIRQ(x) x##_IRQn,
 typedef enum {
     Reset_IRQn = -15,
     NonMaskableInt_IRQn = -14,
@@ -14,6 +13,7 @@ typedef enum {
     DebugMonitor_IRQn = -4,
     PendSV_IRQn = -2,
     SysTick_IRQn = -1,
-#include <platform/defirq.h>
+#define RPM_IRQ(name,num) name##_IRQn = num,
+#include <platform/irqinfo.h>
+#undef RPM_IRQ
 } IRQn_Type;
-#undef DEFIRQ

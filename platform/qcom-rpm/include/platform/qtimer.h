@@ -1,0 +1,1 @@
+void rpm_qtimer_init(void);
