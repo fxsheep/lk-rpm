@@ -14,7 +14,8 @@ MODULE_SRCS += \
 	$(LOCAL_DIR)/debug.c \
 	$(LOCAL_DIR)/vectab.c \
 	$(LOCAL_DIR)/qtimer.c \
-	$(LOCAL_DIR)/sysaccess.c
+	$(LOCAL_DIR)/sysaccess.c \
+	$(LOCAL_DIR)/uart_dm.c
 
 LINKER_SCRIPT += \
 	$(BUILDDIR)/system-twosegment.ld
