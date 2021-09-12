@@ -1,1 +1,1 @@
-RPM_IRQ(QTimer, 51)
+RPM_IRQ(qtimer, 51)

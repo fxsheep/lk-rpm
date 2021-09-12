@@ -1,5 +1,9 @@
 #pragma once
 
+#define RPM_F1_QTMR_V1_F1_BASE             (0x84000)
+
+#define QTMR_BASE                          RPM_F1_QTMR_V1_F1_BASE
+
 #define MSM_IOMAP_BASE_SYS                 (0x0U)
 
 #define PERIPH_SS_BASE                     (MSM_IOMAP_BASE_SYS + 0x07800000)

@@ -1,3 +1,4 @@
+
 /* Copyright (c) 2012, The Linux Foundation. All rights reserved.
 
  * Redistribution and use in source and binary forms, with or without
@@ -26,23 +27,17 @@
  * IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include <sys/types.h>
-#include <platform/timer.h>
+#ifndef __PLATFORM_MSM_SHARED_QTMR_MMAP_H
+#define __PLATFORM_MSM_SHARED_QRMR_MMAP_H
 
+#include <platform/iomap.h>
 
-#define QTMR_TIMER_CTRL_ENABLE          (1 << 0)
-#define QTMR_TIMER_CTRL_INT_MASK        (1 << 1)
+#define QTMR_V1_CNTPCT_LO                (0x00000000 + QTMR_BASE)
+#define QTMR_V1_CNTPCT_HI                (0x00000004 + QTMR_BASE)
+#define QTMR_V1_CNTFRQ                   (0x00000010 + QTMR_BASE)
+#define QTMR_V1_CNTP_CVAL_LO             (0x00000020 + QTMR_BASE)
+#define QTMR_V1_CNTP_CVAL_HI             (0x00000024 + QTMR_BASE)
+#define QTMR_V1_CNTP_TVAL                (0x00000028 + QTMR_BASE)
+#define QTMR_V1_CNTP_CTL                 (0x0000002C + QTMR_BASE)
 
-#define QTMR_PHY_CNT_MAX_VALUE          0xFFFFFFFFFFFFFF
-
-void qtimer_set_physical_timer(lk_time_t msecs_interval,
-	platform_timer_callback tmr_callback, void *tmr_arg);
-void qtimer_disable();
-uint64_t qtimer_get_phy_timer_cnt();
-uint32_t qtimer_current_time();
-uint32_t qtimer_get_frequency();
-void qtimer_uninit();
-void qtimer_init();
-uint32_t qtimer_tick_rate();
-void udelay(unsigned usecs);
-void mdelay(unsigned msecs);
+#endif

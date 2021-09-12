@@ -8,12 +8,12 @@ static void rpm_dummy_irq(void) {
 }
 
 #define RPM_IRQ(name,num) \
-void name##_IRQHandler(void) __WEAK_ALIAS("rpm_dummy_irq");
+void name##_irq(void) __WEAK_ALIAS("rpm_dummy_irq");
 #include <platform/irqinfo.h>
 #undef RPM_IRQ
 
 const void* const __SECTION(".text.boot.vectab2") vectab2[] = {
-#define RPM_IRQ(name,num) [name##_IRQn] = name##_IRQHandler,
+#define RPM_IRQ(name,num) [name##_IRQn] = name##_irq,
 #include <platform/irqinfo.h>
 #undef RPM_IRQ
 };
