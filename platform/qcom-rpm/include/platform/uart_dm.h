@@ -29,6 +29,8 @@
 #ifndef __UART_DM_H__
 #define __UART_DM_H__
 
+#define PERIPH_BLK_BLSP 1
+
 #include <platform/iomap.h>
 
 #define MSM_BOOT_UART_DM_EXTR_BITS(value, start_pos, end_pos) \
