@@ -84,6 +84,14 @@ void qtimer_set_physical_timer(lk_time_t msecs_interval,
 	writel(tick_count, QTMR_V1_CNTP_TVAL);
 	mb();
 
+	/* configure rpm interrupt */
+	int v2;
+	unsigned int v3;
+	v2 = 1 << (51 & 0x1F);
+  	v3 = 51 >> 5;
+	*(uint32_t *)(4 * v3 + 0x80030) |= v2;
+	*(uint32_t *)(4 * v3 + 0x80038) = (*(uint32_t *)(4 * v3 + 0x80038) & ~v2);
+
 	NVIC_EnableIRQ(QTMR_IRQn);
 
 	qtimer_enable();
